@@ -8,11 +8,25 @@
 # This scipt is used to set up ubuntu for further use.
 # Operation as followers:
 # * replace default update source with mirrors.163.com
-# * install basic packages: make curl unzip zip gcc git lrzsz python-setuptools vim htop iotop nmon
+# * install basic packages: make curl unzip zip gcc git 
+#        lrzsz python-setuptools vim htop iotop nmon wget
+#        makepasswd
 
 # USAGE
 # !IMPORTANT run as root or sudo without prompting password cause script ignore any input.
 #
+
+#==
+#== miscs
+#==
+
+#fix locale problem
+if ! grep -q "export LC_ALL=C" /etc/profile
+then
+    echo "fix locale problem"
+    echo "export LC_ALL=C" >> /etc/profile
+    source /etc/profile
+fi
 
 #==
 #== 0. replace default update source
@@ -43,7 +57,7 @@ fi
 #== 1. install neccesary packages
 #==
 echo "===== install basic packages ======"
-for package in make curl unzip zip gcc git lrzsz python-setuptools vim htop iotop nmon
+for package in make wget curl unzip zip gcc git lrzsz python-setuptools vim htop iotop nmon makepasswd
 do
     echo "install ${package}..."
     apt-get -y install ${package}
