@@ -8,7 +8,7 @@
 # This scipt is used to set up ubuntu for further use.
 # Operation as followers:
 # * replace default update source with mirrors.163.com
-# * git
+# * install basic packages: make curl unzip zip gcc git lrzsz python-setuptools vim htop iotop nmon
 
 # USAGE
 # !IMPORTANT run as root or sudo without prompting password cause script ignore any input.
@@ -38,3 +38,15 @@ then
     #update repository
     apt-get update
 fi
+
+#==
+#== 1. install neccesary packages
+#==
+echo "===== install basic packages ======"
+for package in make curl unzip zip gcc git lrzsz python-setuptools vim htop iotop nmon
+do
+    echo "install ${package}..."
+    apt-get -y install ${package}
+    echo "done!!!"
+done
+echo "==== basic packages installed ====="
