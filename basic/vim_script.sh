@@ -18,6 +18,8 @@ then
         echo "configure vim..."
         cd ~
         creates=.vim/vimrc curl -L https://github.com/jhezjkp/dot-vimrc/raw/master/tools/install.sh | sh
+        cd ~/.vim
+        git checkout vivia
         exit 0
     else
         echo "vim is not installed or version to low(<7.0), please upgrade it before we continue."
