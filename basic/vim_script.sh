@@ -17,9 +17,13 @@ then
         #configure vim
         echo "configure vim..."
         cd ~
-        creates=.vim/vimrc curl -L https://github.com/jhezjkp/dot-vimrc/raw/master/tools/install.sh | sh
+        creates=.vim/vimrc curl -L https://github.com/jhezjkp/dot-vimrc/raw/master/tools/install.sh | sh >> /dev/null
         cd ~/.vim
         git checkout vivia
+        echo "\n\ninstall Powerline Python package:"
+        echo "   sudo pip install https://github.com/Lokaltog/powerline/tarball/develop"
+        echo "\nYour vim is now configured!\nPlease open vim and run \"\033[44;37m:BundleInstall\033[0m\" \
+            command to finish the vim plugins installation.\033[0m"]]]
         exit 0
     else
         echo "vim is not installed or version to low(<7.0), please upgrade it before we continue."
