@@ -10,7 +10,7 @@
 # * replace default update source with mirrors.163.com
 # * install basic packages: make curl unzip zip gcc git 
 #        lrzsz python-setuptools vim htop iotop nmon wget
-#        makepasswd
+#        makepasswd bc
 
 # USAGE
 # !IMPORTANT run as root or sudo without prompting password cause script ignore any input.
@@ -57,7 +57,7 @@ fi
 #== 1. install neccesary packages
 #==
 echo "===== install basic packages ======"
-for package in make wget curl unzip zip gcc git lrzsz python-setuptools vim htop iotop nmon makepasswd
+for package in make wget curl unzip zip gcc git lrzsz python-setuptools vim htop iotop nmon makepasswd bc
 do
     echo "install ${package}..."
     apt-get -y install ${package}
