@@ -11,6 +11,8 @@
 # * install basic packages: make curl unzip zip gcc git 
 #        lrzsz python-setuptools python-pip vim htop iotop
 #        nmon wget makepasswd bc
+# * install python packages:
+#        virtualenv virtualenvwrapper
 
 # USAGE
 # !IMPORTANT run as root or sudo without prompting password cause script ignore any input.
@@ -56,7 +58,7 @@ fi
 #==
 #== 1. install neccesary packages
 #==
-echo "===== install basic packages ======"
+echo "===== install basic software packages ======"
 for package in make wget curl unzip zip gcc git lrzsz python-setuptools \
     python-pip vim htop iotop nmon makepasswd bc
 do
@@ -64,4 +66,11 @@ do
     apt-get -y install ${package}
     echo "done!!!"
 done
-echo "==== basic packages installed ====="
+echo "==== basic software packages installed ====="
+
+#==
+#== 2. install python packages
+#==
+echo "==== install python packages ===="
+sudo pip install virtualenv virtualenvwrapper
+echo "==== python packages installed ===="
