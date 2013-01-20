@@ -17,7 +17,7 @@ then
         #configure vim
         echo "configure vim..."
         cd ~
-        creates=.vim/vimrc curl -L https://github.com/jhezjkp/dot-vimrc/raw/master/tools/install.sh | sh >> /dev/null
+        curl -L https://github.com/jhezjkp/dot-vimrc/raw/master/tools/install.sh | sh >> /dev/null
         cd ~/.vim
         git checkout vivia
         echo "\n\ninstall Powerline Python package:"
