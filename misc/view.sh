@@ -14,7 +14,7 @@ fi
 counter=1
 cat $1 | while read line
 do
-    echo "Line $counter:\t$line"
+    echo -e "Line $counter:\t$line"
     counter=$[ $counter + 1 ]
 done
 exit 0
