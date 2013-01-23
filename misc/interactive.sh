@@ -8,8 +8,8 @@ if read -t 5 -p "Pls enter a password:" password
 then
     echo "$password"
 else
-    echo "time out...generating password...done!"
-    passwod=`makepassword --chars=6`
+    echo -e "\ntime out...generating password...done!"
+    passwod=`makepasswd --chars=6`
     echo "$passwod"
 fi
 #显示后退出程序
