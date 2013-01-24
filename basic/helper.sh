@@ -6,7 +6,7 @@
 
 :<<BLOCK
 add the below line after #! declare line to import this shell:
-. `pwd`/os_check.sh
+. `pwd`/helper.sh
 
 sample code:
 #!/usr/bin/env bash
@@ -52,4 +52,38 @@ function is_centos() {
     else
         return 1
     fi
+}
+
+function is_debian() {
+    if [ "Debian" == $os_name ]    
+    then
+        return 0
+    else
+        return 1
+    fi
+}
+
+function is_ubuntu() {
+    if [ "Ubuntu" == $os_name ]    
+    then
+        return 0
+    else
+        return 1
+    fi
+}
+
+
+
+######################################################
+###  color output
+######################################################
+
+function print() {
+    if [ "$#" -lt 1 ]
+    then
+        echo "\n"
+        return 0
+    fi
+    echo -e "${BOLD}\e[44;37m$@\e[0m${NORM}"
+    return 0
 }
