@@ -9,7 +9,8 @@ os_version=""
 os_code=""
 
 #check if lsb_release command is avaliable
-if [ `which lsb_release >> /dev/null 2>&1` ]
+which lsb_release >> /dev/null 2>&1
+if [ $? -eq 0 ]
 then
     os_name=`lsb_release -si`
     os_version=`lsb_release -sr`
