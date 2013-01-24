@@ -4,6 +4,24 @@
 #== this script is used to check os distribution/version/codename(eg: Ubuntu 12.10 quantal)
 #==
 
+:<<BLOCK
+add the below line after #! declare line to import this shell:
+. `pwd`/os_check.sh
+
+sample code:
+#!/usr/bin/env bash
+
+. `pwd`/os_check.sh
+echo $os_name
+
+if is_centos
+then
+    echo 'it is centos!'
+else
+    echo 'it is NOT centos!'
+fi
+BLOCK
+
 os_name=""
 os_version=""
 os_code=""
@@ -25,4 +43,13 @@ else
     fi
 fi
 
-echo $os_name $os_version $os_code
+#echo $os_name $os_version $os_code
+
+function is_centos() {
+    if [ "CentOS" == $os_name ]    
+    then
+        return 0
+    else
+        return 1
+    fi
+}
