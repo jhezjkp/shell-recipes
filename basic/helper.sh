@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #==
-#== this script is used to check os distribution/version/codename(eg: Ubuntu 12.10 quantal)
+#== this script is used to be imported by other scripts
 #==
 
 :<<BLOCK
@@ -21,6 +21,15 @@ else
     echo 'it is NOT centos!'
 fi
 BLOCK
+
+
+
+###########################################
+###   os check
+###########################################
+
+#below code is used to check os distribution/version/codename(eg: Ubuntu 12.10 quantal)
+
 
 os_name=""
 os_version=""
