@@ -115,3 +115,13 @@ function print() {
     echo -e "${BOLD}\e[44;37m$@${NORM}"
     return 0
 }
+
+function blink() {
+    if [ "$#" -lt 1 ]
+    then
+        echo "\n"
+        return 0
+    fi
+    echo -e "${BLINK}$@${NORM}"
+    return 0
+}
