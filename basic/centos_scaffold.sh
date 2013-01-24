@@ -45,7 +45,7 @@ then
 		#backup origin repoFile
 		 mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
 		 wget ${repoUrl} -P /etc/yum.repos.d/
-		 yum update -y
+         yum makecache
 else
 		echo "163 repo has bean set!"		 
 fi
