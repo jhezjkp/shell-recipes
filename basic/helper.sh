@@ -103,6 +103,51 @@ function get_install_cmd() {
     fi
 }
 
+#==
+#== 根据发行版本安装对应的软件包并打印屏幕提示
+#==
+
+function install_package() {
+    if [ $# -lt 1 ]
+    then
+        return 1
+    fi
+    for package in $*
+    do
+        len=`echo ${package} | wc -L`
+        fix=0
+        if [ `expr $len % 2` -eq 1 ]
+        then
+            len=`expr $len - 1`
+            fix=1
+        fi
+        len=`expr $len / 2`
+        printf "+"
+        repeat_print "-" `expr 50`
+        printf "+\n+"
+        repeat_print " " `expr 25 - $len`
+        printf $package 
+        repeat_print " " `expr 25 - $len - $fix`
+        printf "+\n+"
+        repeat_print "-" `expr 50`
+        echo "+"
+        if [ $os_name = "Ubuntu" ] || [ $os_name = "Debian" ]
+        then
+            apt-get -y install ${package}
+        fi
+    done
+}
+
+function repeat_print() {
+    if [ "$#" -lt 2 ]
+    then
+        return 1
+    fi
+    ch="$(printf "%$2s" "")"
+    printf "%s" "${ch// /$1}"
+    return 0;
+}
+
 ######################################################
 ###  color output
 ######################################################
@@ -126,6 +171,25 @@ MAGENTA_F="\033[35m"; MAGENTA_B="\033[45m"
 CYAN_F="\033[36m"; CYAN_B="\033[46m"
 WHITE_F="\033[37m"; WHITE_B="\033[47m"
 
+
+#==
+#== 打印日志
+#==
+
+function log() {
+    if [ "$#" -lt 1 ]
+    then
+        echo "\n"
+        return 0
+    fi
+    echo -e "\e[40;37m$@${NORM}"
+    return 0
+}
+
+#==
+#== 高亮打印，一般用于用户提示的高亮显示
+#==
+
 function print() {
     if [ "$#" -lt 1 ]
     then
@@ -135,6 +199,10 @@ function print() {
     echo -e "${BOLD}\e[44;37m$@${NORM}"
     return 0
 }
+
+#==
+#== 闪烁显示文本
+#==
 
 function blink() {
     if [ "$#" -lt 1 ]
