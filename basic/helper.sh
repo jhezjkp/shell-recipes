@@ -134,6 +134,9 @@ function install_package() {
         if [ $os_name = "Ubuntu" ] || [ $os_name = "Debian" ]
         then
             apt-get -y install ${package}
+        elif [ $os_name = "CentOS" ]
+        then
+            yum -y install ${package}
         fi
     done
 }
