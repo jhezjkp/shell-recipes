@@ -22,6 +22,9 @@ else
 fi
 BLOCK
 
+#global function return value
+return_var=""
+
 
 
 ###########################################
@@ -54,6 +57,10 @@ fi
 
 #echo $os_name $os_version $os_code
 
+#==
+#== 判断发行版本的几个方法
+#==
+
 function is_centos() {
     if [ "CentOS" == $os_name ]    
     then
@@ -81,7 +88,20 @@ function is_ubuntu() {
     fi
 }
 
+#==
+#== 根据发行版本返回对应的软件包的安装命令
+#==
 
+function get_install_cmd() {
+    if [ $# -lt 1 ]
+    then
+        return 1
+    fi
+    if [ $os_name = "Ubuntu" ] || [ $os_name = "Debian" ]
+    then
+        return_var="apt-get install $@"
+    fi
+}
 
 ######################################################
 ###  color output
