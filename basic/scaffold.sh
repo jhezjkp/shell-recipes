@@ -33,7 +33,7 @@
 #fi
 
 #==
-#== 0. replace default update source
+#== replace default update source
 #==
 
 function replace_repository() {
@@ -96,7 +96,7 @@ function replace_repository() {
 
 
 #==
-#== 1. install neccesary packages
+#== install neccesary packages
 #==
 
 function install_basic_packages() {
@@ -107,7 +107,7 @@ function install_basic_packages() {
 }
 
 #==
-#== 2. install python packages
+#== install python packages
 #==
 
 function install_basic_python_packages() {
@@ -116,6 +116,17 @@ function install_basic_python_packages() {
     echo "==== python packages installed ===="
 }
 
+
+#==
+#== setup git
+#==
+function setup_git() {
+    git config --global user.name "jhezjkp"
+    git config --global user.email "jhezjkp@163.com"
+    git config --global core.editor vim
+}
+
 replace_repository
 install_basic_packages
 install_basic_python_packages
+setup_git
