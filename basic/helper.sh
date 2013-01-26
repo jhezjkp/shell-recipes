@@ -101,6 +101,7 @@ function get_install_cmd() {
     then
         return_var="apt-get install $@"
     elif [ $os_name = 'CentOS' ]
+    then
         return_var="yum install $@"
     fi
 }
