@@ -112,7 +112,7 @@ function install_basic_packages() {
 
 function install_basic_python_packages() {
     echo "==== install python packages ===="
-    sudo easy_installvirtualenv virtualenvwrapper
+    easy_install virtualenv virtualenvwrapper
     echo "==== python packages installed ===="
 }
 
