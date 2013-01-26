@@ -8,7 +8,7 @@
 # This scipt is used to set up ubuntu for further use.
 # Operation as followers:
 # * replace default update source with mirrors.163.com
-# * install basic packages: make curl unzip zip gcc git 
+# * install basic packages: zsh make curl unzip zip gcc git 
 #        lrzsz python-setuptools python-pip vim htop iotop
 #        nmon wget makepasswd bc
 # * install python packages:
@@ -101,7 +101,7 @@ function replace_repository() {
 
 function install_basic_packages() {
     log "===== install basic software packages ======"
-    install_package make wget curl unzip zip gcc git lrzsz python-setuptools \
+    install_package zsh make wget curl unzip zip gcc git lrzsz python-setuptools \
         python-pip vim htop iotop nmon makepasswd bc
     log "==== basic software packages installed ====="
 }
