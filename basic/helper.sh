@@ -100,6 +100,8 @@ function get_install_cmd() {
     if [ $os_name = "Ubuntu" ] || [ $os_name = "Debian" ]
     then
         return_var="apt-get install $@"
+    elif [ $os_name = 'CentOS' ]
+        return_var="yum install $@"
     fi
 }
 
