@@ -117,16 +117,6 @@ function install_basic_python_packages() {
 }
 
 
-#==
-#== setup git
-#==
-function setup_git() {
-    git config --global user.name "jhezjkp"
-    git config --global user.email "jhezjkp@163.com"
-    git config --global core.editor vim
-}
-
 replace_repository
 install_basic_packages
 install_basic_python_packages
-setup_git
