@@ -219,3 +219,13 @@ function blink() {
     echo -e "${BLINK}$@${NORM}"
     return 0
 }
+
+#==
+#== 一些有用的工具方法
+#==
+
+#生成随机密码：默认为8位长度，保存在return_var变量中
+function generate_password() {
+    return_var=`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-8}`
+    return 0
+}
