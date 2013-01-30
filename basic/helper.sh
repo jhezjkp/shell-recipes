@@ -153,23 +153,25 @@ function print_with_border() {
     fi
     #计算要输出的内容的长度
     len=`echo $* | wc -L`
+    total_len=`expr 50 + $len`
     #奇偶修正
     fix=0
     if [ `expr $len % 2` -eq 1 ]
     then
         len=`expr $len - 1`
         fix=1
+        total_len=`expr $total_len + 1`
     fi
     len=`expr $len / 2`
     #输出
     printf "+"
-    repeat_print "-" `expr 50`
+    repeat_print "-" $total_len
     printf "+\n+"
-    repeat_print " " `expr 25 - $len`
+    repeat_print " " `expr $total_len / 2 - $len`
     printf "$*"
-    repeat_print " " `expr 25 - $len - $fix`
+    repeat_print " " `expr $total_len / 2 - $len - $fix`
     printf "+\n+"
-    repeat_print "-" `expr 50`
+    repeat_print "-" `expr $total_len`
     echo "+"
     return 0
 
