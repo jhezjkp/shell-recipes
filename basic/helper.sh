@@ -117,23 +117,7 @@ function install_package() {
     fi
     for package in $*
     do
-        len=`echo ${package} | wc -L`
-        fix=0
-        if [ `expr $len % 2` -eq 1 ]
-        then
-            len=`expr $len - 1`
-            fix=1
-        fi
-        len=`expr $len / 2`
-        printf "+"
-        repeat_print "-" `expr 50`
-        printf "+\n+"
-        repeat_print " " `expr 25 - $len`
-        printf $package 
-        repeat_print " " `expr 25 - $len - $fix`
-        printf "+\n+"
-        repeat_print "-" `expr 50`
-        echo "+"
+        print_with_border $package
         if [ $os_name = "Ubuntu" ] || [ $os_name = "Debian" ]
         then
             apt-get -y install ${package}
@@ -144,6 +128,10 @@ function install_package() {
     done
 }
 
+#==
+#== 重复输出某字符:第一个参数是内容，第二个参数是重复的次数
+#==
+
 function repeat_print() {
     if [ "$#" -lt 2 ]
     then
@@ -152,6 +140,39 @@ function repeat_print() {
     ch="$(printf "%$2s" "")"
     printf "%s" "${ch// /$1}"
     return 0;
+}
+
+#==
+#== 输出带方框修饰的内容
+#==
+
+function print_with_border() {
+    if [ "$#" -lt 1 ]
+    then
+        return 1
+    fi
+    #计算要输出的内容的长度
+    len=`echo $* | wc -L`
+    #奇偶修正
+    fix=0
+    if [ `expr $len % 2` -eq 1 ]
+    then
+        len=`expr $len - 1`
+        fix=1
+    fi
+    len=`expr $len / 2`
+    #输出
+    printf "+"
+    repeat_print "-" `expr 50`
+    printf "+\n+"
+    repeat_print " " `expr 25 - $len`
+    printf "$*"
+    repeat_print " " `expr 25 - $len - $fix`
+    printf "+\n+"
+    repeat_print "-" `expr 50`
+    echo "+"
+    return 0
+
 }
 
 ######################################################
