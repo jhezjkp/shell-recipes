@@ -24,7 +24,7 @@ then
     install_package mysql-client libmysqlclient-dev mysql-server
 elif is_centos
 then
-    install_package mysql mysql-server
+    install_package mysql mysql-devel mysql-server
     service mysqld start
     /usr/bin/mysqladmin -u root password $password
 fi
