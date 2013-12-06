@@ -117,6 +117,6 @@ function install_basic_python_packages() {
 }
 
 
-replace_repository
+#replace_repository
 install_basic_packages
 install_basic_python_packages
