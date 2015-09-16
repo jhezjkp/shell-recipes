@@ -10,6 +10,7 @@ function setup_git() {
     git config --global core.editor vim
     #config
     git config --global i18n.commitencoding utf-8
+    git config --global push.default simple
     #alias
     git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --"
 }
