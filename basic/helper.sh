@@ -11,7 +11,7 @@ add the below line after #! declare line to import this shell:
 sample code:
 #!/usr/bin/env bash
 
-. `pwd`/os_check.sh
+. `pwd`/helper.sh
 echo $os_name
 
 if is_centos
