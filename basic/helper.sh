@@ -47,11 +47,14 @@ then
     os_code=`lsb_release -sc`
 else
     releaseFile="/etc/redhat-release"
-    if [ -f "$releaseFile" ]
-    then
+    issueFile="/etc/issue"
+    if [ -f "$releaseFile" ]; then
         os_name=`cat $releaseFile | cut -d " " -f1`
         os_version=`cat $releaseFile | cut -d " " -f3`
         os_code=`cat $releaseFile | cut -d " " -f4`
+    elif [ -f "$issueFile" ]; then
+        os_name=`cat $issueFile | cut -d " " -f1`
+        os_version=`cat $issueFile | cut -d " " -f3`
     fi
 fi
 
