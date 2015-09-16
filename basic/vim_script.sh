@@ -12,10 +12,17 @@ then
 exit 1
 fi
 
+
 vimVersion=`vim --version  | sed -n '1p' | cut  -d " " -f5`
 if [ $(echo "${vimVersion} >= 7" | bc) -eq 1 ]
 then
     echo "vim version is ${vimVersion}, pass..."
+
+    vimPython2Support=`vim --version | grep python2`
+    if [ $vimPython2Support="" ]; then 
+        printf "python2 is not compiled in vim, vim-nox need to be install\n"
+        install_package vim-nox
+    fi
 
     #configure vim
     echo "configure vim..."
@@ -34,3 +41,4 @@ else
     echo "vim is not installed or version to low(<7.0), please upgrade it before we continue."
     exit 1
 fi
+
