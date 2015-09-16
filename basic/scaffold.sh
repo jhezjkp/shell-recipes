@@ -102,7 +102,7 @@ function replace_repository() {
 function install_basic_packages() {
     log "===== install basic software packages ======"
     install_package zsh make cmake wget curl unzip zip gcc git lrzsz python-setuptools \
-        python-pip vim htop iotop nmon makepasswd bc patch
+        python-pip python-dev vim htop iotop nmon makepasswd bc patch
     log "==== basic software packages installed ====="
 }
 
