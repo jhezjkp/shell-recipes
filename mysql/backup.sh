@@ -17,6 +17,8 @@ for db in $databases; do
     #mysqldump -h$host -P$port -u$user -p$password --databases --default-character-set=utf8 $db > $db.sql
     #mysqldump -h$host -P$port -u$user -p$password --default-character-set=utf8 $db > $db.sql
     #压缩一下
-    mysqldump -h$host -P$port -u$user -p$password --databases --default-character-set=utf8 $db | gzip > $db.sql.gz
+    #mysqldump -h$host -P$port -u$user -p$password --databases --default-character-set=utf8 $db | gzip > $db.sql.gz
+    #加时间戳
+    mysqldump -h$host -P$port -u$user -p$password --databases --default-character-set=utf8 $db | gzip > ${db}_`date +%Y%m%d%H%M%S`.sql.gz
     echo "success!!"
 done
